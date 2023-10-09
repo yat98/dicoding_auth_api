@@ -1,14 +1,16 @@
 /* istanbul ignore file */
 const { createContainer } = require('instances-container');
 
-const { nanoId } = require('nanoid');
+const { nanoid } = require('nanoid');
 const bcrypt = require('bcrypt');
 const pool = require('./database/postgres/pool');
-const UserRepository = require('../Domains/users/UserRepository');
+
 const UserRepositoryPostgres = require('./repository/UserRepositoryPostgres');
-const Passwordhash = require('../Applications/security/PasswordHash');
 const BcryptPasswordHash = require('./security/BcryptPasswordHash');
+
 const AddUserUseCase = require('../Applications/use_case/AddUserUseCase');
+const UserRepository = require('../Domains/users/UserRepository');
+const PasswordHash = require('../Applications/security/PasswordHash');
 
 const container = createContainer();
 
@@ -22,13 +24,13 @@ container.register([
           concrete: pool
         },
         {
-          concrete: nanoId,
+          concrete: nanoid,
         }
       ]
     }
   },
   {
-    key: Passwordhash.name,
+    key: PasswordHash.name,
     Class: BcryptPasswordHash,
     parameter: {
       dependencies: [
@@ -53,9 +55,11 @@ container.register([
         },
         {
           name: 'passwordHash',
-          internal: Passwordhash.name
+          internal: PasswordHash.name
         },
       ]
     }
   }
-])
+]);
+
+module.exports = container;
