@@ -5,5 +5,6 @@ describe('PasswordHash', () => {
     const passwordHash = new Passwordhash();
 
     expect(passwordHash.hash('secretpassword')).rejects.toThrowError('PASSWORD_HASH.METHOD_NOT_IMPLEMENTED');
+    expect(passwordHash.comparePassword('secretpassword','encryptedpassword')).rejects.toThrowError('PASSWORD_HASH.METHOD_NOT_IMPLEMENTED');
   });
 })
