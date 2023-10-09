@@ -1,6 +1,6 @@
 const Passwordhash = require("../PasswordHash");
 
-describe('UserRepository', () => { 
+describe('PasswordHash', () => { 
   it('should throw error when invoke abstract behavior', () => {
     const passwordHash = new Passwordhash();
 
