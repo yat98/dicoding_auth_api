@@ -14,6 +14,12 @@ describe('DomainErrorTranslator', () => {
 
     expect(DomainErrorTranslator.translate(new Error('REGISTER_USER.USERNAME_CONTAIN_RESTRICTED_CHARACTER')))
       .toStrictEqual(new InvariantError('cannot create user, username contain restricted character'));
+
+    expect(DomainErrorTranslator.translate(new Error('USER_LOGIN.NOT_CONTAIN_NEED_PROPERTY')))
+      .toStrictEqual(new InvariantError('username or password property not contain'));
+
+    expect(DomainErrorTranslator.translate(new Error('USER_LOGIN.NOT_MEET_DATA_SPESIFICATION')))
+      .toStrictEqual(new InvariantError('username or password data type inapplicable'));
   });
 
   it('should return original error when error message is not needed to translate', () => {

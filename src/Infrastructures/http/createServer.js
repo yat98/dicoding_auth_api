@@ -1,5 +1,6 @@
 const Hapi = require('@hapi/hapi');
 const users = require('../../Interfaces/http/api/users/index');
+const authentications = require('../../Interfaces/http/api/authentications/index');
 const DomainErrorTranslator = require('../../Commons/exceptions/DomainErrorTranslator');
 const ClientError = require('../../Commons/exceptions/ClientError');
 
@@ -13,6 +14,10 @@ const createServer = async (container) => {
     {
       plugin: users,
       options: { container }
+    },
+    {
+      plugin: authentications,
+      options: { container },
     }
   ]);
 
