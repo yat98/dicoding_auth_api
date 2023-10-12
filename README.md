@@ -1,4 +1,4 @@
-<h1 align="center">Notes App API</h1>
+<h1 align="center">Auth API</h1>
 
 <p align="center">
 <img src="https://github.com/yat98/dicoding_auth_api/actions/workflows/ci.yml/badge.svg" />
