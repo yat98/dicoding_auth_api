@@ -18,6 +18,14 @@ const createServer = async (container) => {
     }),
   });
 
+  server.route({
+    method: 'GET',
+    path: '/hello',
+    handler: () => ({
+      value: 'Hello world!',
+    }),
+  });
+
   await server.register([
     {
       plugin: users,
